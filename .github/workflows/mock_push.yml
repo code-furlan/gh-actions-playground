@@ -15,6 +15,14 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
+      - name: Check if dispatch
+        if: ${{ github.event_name == "workflow_dispatch" }}
+        run: echo "Is dispatch"
+
+      - name: Check if push
+        if: ${{ github.event_name == "push" }}
+        run: echo "Is push"
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
