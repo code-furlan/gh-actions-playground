@@ -1,5 +1,5 @@
-name: Sample Workflow
-run-name: Sample Workflow
+name: Sample Workflow Push
+run-name: Sample Workflow Push
 on: 
   push:
     branches:

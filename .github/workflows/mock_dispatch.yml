@@ -1,5 +1,5 @@
-name: Sample Workflow
-run-name: Sample Workflow
+name: Sample Workflow Dispatch
+run-name: Sample Workflow Dispatch
 on: 
   workflow_dispatch:
     inputs:
