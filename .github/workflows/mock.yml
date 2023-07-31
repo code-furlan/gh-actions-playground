@@ -1,16 +1,13 @@
-name: DBT Deployment
-run-name: ${{ inputs.environment }} - DBT Deployment
+name: Sample Workflow
+run-name: Sample Workflow
 on: 
   push:
     branches:
-      - dev
-      - test
-      - prod
       - main
 
 jobs:
   DBT_DEPLOY:
-    runs-on: [ubuntu]
+    runs-on: [ubuntu-latest]
     timeout-minutes: 720
 
     steps:
@@ -23,9 +20,3 @@ jobs:
         env:
           environment: ${{ env.environment }}
           environment2: ${{ inputs.environment }}
-
-      - name: Install Python requirements
-        run: pip install -r requirements.txt -q  
-        
-      - name: 'Generate and upload dbt projects and documentation'
-        uses: Sonos-Inc/dpe-dbt-utils/actions/dbt_deploy@main
