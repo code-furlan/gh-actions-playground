@@ -1,0 +1,31 @@
+name: DBT Deployment
+run-name: ${{ inputs.environment }} - DBT Deployment
+on: 
+  push:
+    branches:
+      - dev
+      - test
+      - prod
+      - main
+
+jobs:
+  DBT_DEPLOY:
+    runs-on: [ubuntu]
+    timeout-minutes: 720
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      
+      - name: CHeck usage of empty vars
+        run: ${{ github.action_path }}/scripts/use_vars.sh
+        env:
+          environment: ${{ env.environment }}
+          environment2: ${{ inputs.environment }}
+
+      - name: Install Python requirements
+        run: pip install -r requirements.txt -q  
+        
+      - name: 'Generate and upload dbt projects and documentation'
+        uses: Sonos-Inc/dpe-dbt-utils/actions/dbt_deploy@main
