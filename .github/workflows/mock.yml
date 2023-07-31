@@ -14,6 +14,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
+
+      - name: Dump context
+        run: ${{ toJson(github) }}
+
+      - name: Grant permission to execute scripts
+        run: chmod +x .github/scripts/*
       
       - name: Check usage of empty vars
         run: .github/scripts/vars_usage.sh
