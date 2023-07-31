@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - test
+      - prod
 
 jobs:
   DBT_DEPLOY:
