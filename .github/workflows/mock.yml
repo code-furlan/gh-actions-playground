@@ -16,7 +16,7 @@ jobs:
           ref: ${{ github.ref }}
       
       - name: CHeck usage of empty vars
-        run: ${{ github.action_path }}/scripts/use_vars.sh
+        run: ./scripts/use_vars.sh
         env:
           environment: ${{ env.environment }}
           environment2: ${{ inputs.environment }}
